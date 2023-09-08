@@ -1,0 +1,60 @@
+1.Write a “person” class to hold all the details.
+class Person {
+  constructor(firstName, lastName, age, email) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+    this.email = email;
+  }
+
+  getFullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+
+  getAge() {
+    return this.age;
+  }
+
+  getEmail() {
+    return this.email;
+  }
+
+  // You can add more methods here for additional functionality
+}
+
+
+const person1 = new Person("Dina", "Dinesh", 24, "Dina@example.com");
+
+console.log(person1.getFullName()); 
+console.log(person1.getAge());     
+console.log(person1.getEmail()); 
+-------------------------------------------------------------------------------------------------------------
+2.write a class to calculate the uber price.
+class UberPriceCalculator {
+  constructor(baseFare, costPerMile, costPerMinute, surgeMultiplier) {
+    this.baseFare = baseFare;
+    this.costPerMile = costPerMile;
+    this.costPerMinute = costPerMinute;
+    this.surgeMultiplier = surgeMultiplier || 1; // Default to no surge pricing
+  }
+
+  calculatePrice(distanceInMiles, timeInMinutes) {
+    const fareBeforeSurge = this.baseFare + 
+                            (this.costPerMile * distanceInMiles) + 
+                            (this.costPerMinute * timeInMinutes);
+
+    const finalFare = fareBeforeSurge * this.surgeMultiplier;
+    
+    return finalFare;
+  }
+}
+
+// Example usage:
+const calculator = new UberPriceCalculator(2.5, 1.5, 0.3); // Base fare, cost per mile, cost per minute
+
+const distance = 5; // miles
+const time = 15; // minutes
+
+const price = calculator.calculatePrice(distance, time);
+console.log(`The estimated Uber price is $${price.toFixed(2)}`);
+  
